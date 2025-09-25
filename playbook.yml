@@ -1,0 +1,16 @@
+---
+- name: Deploy GCP VM with Terraform
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Initialize Terraform
+      command: terraform init
+      args:
+        chdir: "{{ playbook_dir }}/gcp_vm"
+
+    - name: Apply Terraform
+      command: terraform apply -auto-approve
+      args:
+        chdir: "{{ playbook_dir }}/gcp_vm"
+
